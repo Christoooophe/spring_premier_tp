@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 
 @RestController
+@RequestMapping("/temperature")
 //@RequestMapping("/temperature")
 public class TemperatureController {
 
@@ -14,7 +15,7 @@ public class TemperatureController {
         this.temperatureService = temperatureService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public HashMap<String, Double> getTemperature(){
         return temperatureService.getTemperatureBase();
     }
@@ -24,8 +25,8 @@ public class TemperatureController {
         return temperatureService.getTemperatureConverties(celcius);
     }
 
-//    @PostMapping("temperature/convert")
-//    public HashMap<String, Double> convertTemperature(@RequestBody String unit, @RequestBody double value){
-//        return temperatureService.converter(unit, value);
-//    }
+    @PostMapping("/convert")
+    public HashMap<String, Double> convertTemperature(@RequestBody Temperature temperature){
+        return temperatureService.converter(temperature.getNameTemperature(), temperature.getTemperature());
+    }
 }

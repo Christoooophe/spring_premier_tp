@@ -31,4 +31,11 @@ public class TemperatureService {
         return listeTemperatures;
     }
 
+    public HashMap<String, Double> converter(String nomTemperature, double temperature){
+        HashMap<String, Double> listeTemperatures = new HashMap<>();
+
+        listeTemperatures.put(nomTemperature, temperature);
+
+        return listeTemperatures;
+    }
 }
